@@ -1,0 +1,372 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>php学习笔记 01 | q1jun's Blog</title><meta name="keywords" content="后端,php,超文本预处理器"><meta name="author" content="q1jun"><meta name="copyright" content="q1jun"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="php学习笔记 01 小知识：PHP是世界上最好的语言这句话是怎么来的？PHP是世界上最好的语言这句话，最早出现在2001年7月的PHP官方文档中原因很明确，只是说PHP是web开发中的最好的语言，但经过流传之后就变成了PHP是世界上最好的语言了  0x01 php的输出php的输出有以下几个语句：  echo() print() print_r() var_dunp()  0x0101 echo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php学习笔记 01">
+<meta property="og:url" content="http://q1jun.cn/2021/03/19/444faf94523a-q1jun/index.html">
+<meta property="og:site_name" content="q1jun&#39;s Blog">
+<meta property="og:description" content="php学习笔记 01 小知识：PHP是世界上最好的语言这句话是怎么来的？PHP是世界上最好的语言这句话，最早出现在2001年7月的PHP官方文档中原因很明确，只是说PHP是web开发中的最好的语言，但经过流传之后就变成了PHP是世界上最好的语言了  0x01 php的输出php的输出有以下几个语句：  echo() print() print_r() var_dunp()  0x0101 echo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://q1jun.cn/img/wallpaper2.jpg">
+<meta property="article:published_time" content="2021-03-19T04:23:31.000Z">
+<meta property="article:modified_time" content="2021-03-19T04:23:31.000Z">
+<meta property="article:author" content="q1jun">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="php">
+<meta property="article:tag" content="超文本预处理器">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://q1jun.cn/img/wallpaper2.jpg"><link rel="shortcut icon" href="/img/wallpaper3.jpg"><link rel="canonical" href="http://q1jun.cn/2021/03/19/444faf94523a-q1jun/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: q1jun","link":"链接: ","source":"来源: q1jun's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'php学习笔记 01',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-03-19 12:23:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 文章分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/wallpaper2.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">q1jun's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 文章分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">php学习笔记 01</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-03-19T04:23:31.000Z" title="发表于 2021-03-19 12:23:31">2021-03-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-03-19T04:23:31.000Z" title="更新于 2021-03-19 12:23:31">2021-03-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/">后端学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0/PHP/">PHP</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">624</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="php学习笔记-01"><a href="#php学习笔记-01" class="headerlink" title="php学习笔记 01"></a>php学习笔记 01</h1><blockquote>
+<p>小知识：<code>PHP是世界上最好的语言</code>这句话是怎么来的？<br>PHP是世界上最好的语言这句话，最早出现在2001年7月的PHP官方文档中<br>原因很明确，只是说PHP是web开发中的最好的语言，但经过流传之后就变成了PHP是世界上最好的语言了</p>
+</blockquote>
+<h2 id="0x01-php的输出"><a href="#0x01-php的输出" class="headerlink" title="0x01 php的输出"></a>0x01 php的输出</h2><p>php的输出有以下几个语句：</p>
+<ul>
+<li>echo()</li>
+<li>print()</li>
+<li>print_r()</li>
+<li>var_dunp()</li>
+</ul>
+<h3 id="0x0101-echo"><a href="#0x0101-echo" class="headerlink" title="0x0101 echo() :"></a>0x0101 echo() :</h3><p>可以一次输出多个值，多个值之间用逗号分隔。但是echo()是语言结构(<em>language construct</em>)，并__不是真正的函数__，因此不能作为表达式的一部分来使用。echo()是php的内部指令，不是函数，且__无返回值__。</p>
+<h3 id="0x0102-print"><a href="#0x0102-print" class="headerlink" title="0x0102 print():"></a>0x0102 print():</h3><p>函数print()打印一个值(它的参数)，如果字符串成功显示则返回true，否则返回false。只能打印出简单类型变量的值（如int、string），__有返回值__。</p>
+<h3 id="0x0103-print-r-和var-dump"><a href="#0x0103-print-r-和var-dump" class="headerlink" title="0x0103 print_r()和var_dump():"></a>0x0103 print_r()和var_dump():</h3><p>print_r()可以把字符串和数字简单地打印出来，而数组则以括起来的键和值得列表形式显示，并以Array开头。但print_r()输出布尔值和NULL的结果没有意义，因为都是打印”\n”。因此用var_dump()函数更适合调试。print_r是函数，可以打印出比较复杂的变量（如数组、对象），有返回值。</p>
+<h2 id="0x02-php的注释"><a href="#0x02-php的注释" class="headerlink" title="0x02 php的注释"></a>0x02 php的注释</h2><p>php的注释有三种：<code>//内容</code>，<code>/*内容*/</code>，<code>#内容</code>。</p>
+<blockquote>
+<p>php的注释不会在前端页面的源代码中显示，HTML的注释则会显示在前端页面的源代码中(因为前端页面就是html😂)。</p>
+</blockquote>
+<h3 id="0x0201-单行注释："><a href="#0x0201-单行注释：" class="headerlink" title="0x0201 单行注释："></a>0x0201 单行注释：</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 这是php的单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 这也是php的单行注释(不建议使用)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="0x0202-多行注释："><a href="#0x0202-多行注释：" class="headerlink" title="0x0202 多行注释："></a>0x0202 多行注释：</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">这是</span></span><br><span class="line"><span class="comment">php</span></span><br><span class="line"><span class="comment">的多行注释</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="0x03-php的数据类型"><a href="#0x03-php的数据类型" class="headerlink" title="0x03 php的数据类型"></a>0x03 php的数据类型</h3><p>php有八大数据类型，如下：</p>
+<ul>
+<li>四种标量类型：布尔类型、整型、浮点型、字符串型。</li>
+<li>两种复合类型：数组、对象。</li>
+<li>两种特殊类型：资源、NULL。</li>
+</ul>
+<h2 id="php的变量"><a href="#php的变量" class="headerlink" title="php的变量"></a>php的变量</h2><ol>
+<li>php中的变量大小写敏感</li>
+<li>变量的命名只能以下划线开头或者字母开头，不能以数字开头且不包含特殊字符。</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// php的变量命名</span></span><br><span class="line"><span class="variable">$_test</span></span><br><span class="line"><span class="variable">$hello</span></span><br><span class="line"><span class="variable">$_123</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>php有九大超全局变量(<strong>系统变量</strong>):</p>
+<ul>
+<li><strong>$GLOBALS</strong></li>
+<li><strong>$_SERVER</strong></li>
+<li><strong>$_GET</strong></li>
+<li><strong>$_POST</strong></li>
+<li><strong>$_REQUEST</strong></li>
+<li><strong>$_COOKIE</strong></li>
+<li><strong>$_SESSION</strong></li>
+<li><strong>$_FILES</strong></li>
+<li><strong>$_ENV</strong></li>
+</ul>
+<p>PHP 变量作用域<br>变量的作用域是脚本中变量可被引用&#x2F;使用的部分。</p>
+<p>PHP 有四种不同的变量作用域：</p>
+<ul>
+<li>local</li>
+<li>global</li>
+<li>static</li>
+<li>parameter</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">q1jun</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://q1jun.cn/2021/03/19/444faf94523a-q1jun/">http://q1jun.cn/2021/03/19/444faf94523a-q1jun/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://q1jun.cn" target="_blank">q1jun's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%90%8E%E7%AB%AF/">后端</a><a class="post-meta__tags" href="/tags/php/">php</a><a class="post-meta__tags" href="/tags/%E8%B6%85%E6%96%87%E6%9C%AC%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8/">超文本预处理器</a></div><div class="post_share"><div class="social-share" data-image="/img/wallpaper2.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/08/01/cfb2a88933dc-q1jun/"><img class="prev-cover" src="/img/wallpaper7.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Spring Boot 学习笔记 01</div></div></a></div><div class="next-post pull-right"><a href="/2021/03/18/762f1d5327cf-q1jun/"><img class="next-cover" src="/img/wallpaper3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">php超文本预处理器</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/03/18/762f1d5327cf-q1jun/" title="php超文本预处理器"><img class="cover" src="/img/wallpaper3.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-18</div><div class="title">php超文本预处理器</div></div></a></div><div><a href="/2021/08/01/cfb2a88933dc-q1jun/" title="Spring Boot 学习笔记 01"><img class="cover" src="/img/wallpaper7.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-01</div><div class="title">Spring Boot 学习笔记 01</div></div></a></div><div><a href="/2021/08/03/5fffb9c70d6b-q1jun/" title="Spring Boot 学习笔记 02"><img class="cover" src="/img/wallpaper6.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-03</div><div class="title">Spring Boot 学习笔记 02</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">Giscus</span><span class="switch-btn"></span><span class="second-comment">Livere</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NTkwMi8zMjM2Ng=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#php%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-01"><span class="toc-text">php学习笔记 01</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-php%E7%9A%84%E8%BE%93%E5%87%BA"><span class="toc-text">0x01 php的输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x0101-echo"><span class="toc-text">0x0101 echo() :</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x0102-print"><span class="toc-text">0x0102 print():</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x0103-print-r-%E5%92%8Cvar-dump"><span class="toc-text">0x0103 print_r()和var_dump():</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-php%E7%9A%84%E6%B3%A8%E9%87%8A"><span class="toc-text">0x02 php的注释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x0201-%E5%8D%95%E8%A1%8C%E6%B3%A8%E9%87%8A%EF%BC%9A"><span class="toc-text">0x0201 单行注释：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x0202-%E5%A4%9A%E8%A1%8C%E6%B3%A8%E9%87%8A%EF%BC%9A"><span class="toc-text">0x0202 多行注释：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x03-php%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">0x03 php的数据类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-text">php的变量</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2022 By q1jun</div><div class="footer_custom_text"><span>备案号：赣ICP备2021005418号-2</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script><script>function loadGiscus () {
+  let nowTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+
+  const config = Object.assign({
+    src: 'https://giscus.app/client.js',
+    'data-repo': 'q1jun/discussionRepo',
+    'data-repo-id': 'R_kgDOHF7Pfg',
+    'data-category-id': 'DIC_kwDOHF7Pfs4COV0X',
+    'data-mapping': 'pathname',
+    'data-theme': nowTheme,
+    'data-reactions-enabled': '1',
+    crossorigin: 'anonymous',
+    async: true
+  },null)
+
+  let ele = document.createElement('script')
+  for (let key in config) {
+    ele.setAttribute(key, config[key])
+  }
+  document.getElementById('giscus-wrap').insertAdjacentElement('afterbegin',ele)
+}
+
+function changeGiscusTheme () {
+  const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+
+  function sendMessage(message) {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+  }
+
+  sendMessage({
+    setConfig: {
+      theme: theme
+    }
+  });
+}
+
+if ('Giscus' === 'Giscus' || !false) {
+  if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+  else loadGiscus()
+} else {
+  function loadOtherComment () {
+    loadGiscus()
+  }
+}</script><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Giscus' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script></div></body></html>
