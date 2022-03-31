@@ -1,0 +1,516 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>微信小程序学习笔记 03 | q1jun's Blog</title><meta name="keywords" content="前端,JavaScript,小程序,WeChat"><meta name="author" content="q1jun"><meta name="copyright" content="q1jun"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="微信小程序学习笔记 030x01 this 关键字this关键字是一个非常重要的语法点。毫不夸张地说，不理解它的含义，大部分开发任务都无法完成。 前一章已经提到，this可以用在构造函数之中，表示实例对象。除此之外，this还可以用在别的场合。但不管是什么场合，this都有一个共同点：它总是返回一个对象。 简单说，this就是属性或方法“当前”所在的对象。 this.property  上面代码中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序学习笔记 03">
+<meta property="og:url" content="http://q1jun.cn/2021/09/01/8c49d765b54e-q1jun/index.html">
+<meta property="og:site_name" content="q1jun&#39;s Blog">
+<meta property="og:description" content="微信小程序学习笔记 030x01 this 关键字this关键字是一个非常重要的语法点。毫不夸张地说，不理解它的含义，大部分开发任务都无法完成。 前一章已经提到，this可以用在构造函数之中，表示实例对象。除此之外，this还可以用在别的场合。但不管是什么场合，this都有一个共同点：它总是返回一个对象。 简单说，this就是属性或方法“当前”所在的对象。 this.property  上面代码中">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://q1jun.cn/img/wallpaper3.jpg">
+<meta property="article:published_time" content="2021-09-01T09:23:31.000Z">
+<meta property="article:modified_time" content="2021-09-01T09:23:31.000Z">
+<meta property="article:author" content="q1jun">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="小程序">
+<meta property="article:tag" content="WeChat">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://q1jun.cn/img/wallpaper3.jpg"><link rel="shortcut icon" href="/img/wallpaper3.jpg"><link rel="canonical" href="http://q1jun.cn/2021/09/01/8c49d765b54e-q1jun/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: q1jun","link":"链接: ","source":"来源: q1jun's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '微信小程序学习笔记 03',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-09-01 17:23:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 文章分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/wallpaper3.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">q1jun's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 文章分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">微信小程序学习笔记 03</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-09-01T09:23:31.000Z" title="发表于 2021-09-01 17:23:31">2021-09-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-09-01T09:23:31.000Z" title="更新于 2021-09-01 17:23:31">2021-09-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">前端学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>22分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="微信小程序学习笔记-03"><a href="#微信小程序学习笔记-03" class="headerlink" title="微信小程序学习笔记 03"></a>微信小程序学习笔记 03</h1><h2 id="0x01-this-关键字"><a href="#0x01-this-关键字" class="headerlink" title="0x01 this 关键字"></a>0x01 this 关键字</h2><p><code>this</code>关键字是一个非常重要的语法点。毫不夸张地说，不理解它的含义，大部分开发任务都无法完成。</p>
+<p>前一章已经提到，<code>this</code>可以用在构造函数之中，表示实例对象。除此之外，<code>this</code>还可以用在别的场合。但不管是什么场合，<code>this</code>都有一个共同点：它总是返回一个对象。</p>
+<p>简单说，<code>this</code>就是属性或方法“当前”所在的对象。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">property</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>this</code>就代表<code>property</code>属性当前所在的对象。</p>
+<p>下面是一个实际的例子。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">  <span class="attr">describe</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;姓名：&#x27;</span>+ <span class="variable language_">this</span>.<span class="property">name</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">person.<span class="title function_">describe</span>()</span><br><span class="line"><span class="comment">// &quot;姓名：张三&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>this.name</code>表示<code>name</code>属性所在的那个对象。由于<code>this.name</code>是在<code>describe</code>方法中调用，而<code>describe</code>方法所在的当前对象是<code>person</code>，因此<code>this</code>指向<code>person</code>，<code>this.name</code>就是<code>person.name</code>。</p>
+<p>由于对象的属性可以赋给另一个对象，所以属性所在的当前对象是可变的，即<code>this</code>的指向是可变的。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> A = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">  <span class="attr">describe</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;姓名：&#x27;</span>+ <span class="variable language_">this</span>.<span class="property">name</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> B = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;李四&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">B.<span class="property">describe</span> = A.<span class="property">describe</span>;</span><br><span class="line">B.<span class="title function_">describe</span>()</span><br><span class="line"><span class="comment">// &quot;姓名：李四&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>A.describe</code>属性被赋给<code>B</code>，于是<code>B.describe</code>就表示<code>describe</code>方法所在的当前对象是<code>B</code>，所以<code>this.name</code>就指向<code>B.name</code>。</p>
+<p>稍稍重构这个例子，<code>this</code>的动态指向就能看得更清楚。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;姓名：&#x27;</span>+ <span class="variable language_">this</span>.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> A = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">  <span class="attr">describe</span>: f</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> B = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;李四&#x27;</span>,</span><br><span class="line">  <span class="attr">describe</span>: f</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">A.<span class="title function_">describe</span>() <span class="comment">// &quot;姓名：张三&quot;</span></span><br><span class="line">B.<span class="title function_">describe</span>() <span class="comment">// &quot;姓名：李四&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，函数<code>f</code>内部使用了<code>this</code>关键字，随着<code>f</code>所在的对象不同，<code>this</code>的指向也不同。</p>
+<p>只要函数被赋给另一个变量，<code>this</code>的指向就会变。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;age&quot;</span> <span class="attr">size</span>=<span class="string">3</span> <span class="attr">onChange</span>=<span class="string">&quot;validate(this, 18, 99);&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">function</span> <span class="title function_">validate</span>(<span class="params">obj, lowval, hival</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">if</span> ((obj.<span class="property">value</span> &lt; lowval) || (obj.<span class="property">value</span> &gt; hival))</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Invalid Value!&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码是一个文本输入框，每当用户输入一个值，就会调用<code>onChange</code>回调函数，验证这个值是否在指定范围。浏览器会向回调函数传入当前对象，因此<code>this</code>就代表传入当前对象（即文本框），然后就可以从<code>this.value</code>上面读到用户的输入值。</p>
+<p>总结一下，JavaScript 语言之中，一切皆对象，运行环境也是对象，所以函数都是在某个对象之中运行，<code>this</code>就是函数运行时所在的对象（环境）。这本来并不会让用户糊涂，但是 JavaScript 支持运行环境动态切换，也就是说，<code>this</code>的指向是动态的，没有办法事先确定到底指向哪个对象，这才是最让初学者感到困惑的地方。</p>
+<h3 id="0x0101-this的实质"><a href="#0x0101-this的实质" class="headerlink" title="0x0101 this的实质"></a>0x0101 this的实质</h3><p>JavaScript 语言之所以有 this 的设计，跟内存里面的数据结构有关系。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">foo</span>:  <span class="number">5</span> &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码将一个对象赋值给变量<code>obj</code>。JavaScript 引擎会先在内存里面，生成一个对象<code>&#123; foo: 5 &#125;</code>，然后把这个对象的内存地址赋值给变量<code>obj</code>。也就是说，变量<code>obj</code>是一个地址（reference）。后面如果要读取<code>obj.foo</code>，引擎先从<code>obj</code>拿到内存地址，然后再从该地址读出原始的对象，返回它的<code>foo</code>属性。</p>
+<p>原始的对象以字典结构保存，每一个属性名都对应一个属性描述对象。举例来说，上面例子的<code>foo</code>属性，实际上是以下面的形式保存的。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">foo</span>: &#123;</span><br><span class="line">    [[value]]: <span class="number">5</span></span><br><span class="line">    [[writable]]: <span class="literal">true</span></span><br><span class="line">    [[enumerable]]: <span class="literal">true</span></span><br><span class="line">    [[configurable]]: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意，<code>foo</code>属性的值保存在属性描述对象的<code>value</code>属性里面。</p>
+<p>这样的结构是很清晰的，问题在于属性的值可能是一个函数。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">foo</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;&#125; &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这时，引擎会将函数单独保存在内存中，然后再将函数的地址赋值给<code>foo</code>属性的<code>value</code>属性。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">foo</span>: &#123;</span><br><span class="line">    [[value]]: 函数的地址</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于函数是一个单独的值，所以它可以在不同的环境（上下文）执行。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> f = <span class="keyword">function</span> (<span class="params"></span>) &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">f</span>: f &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单独执行</span></span><br><span class="line"><span class="title function_">f</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// obj 环境执行</span></span><br><span class="line">obj.<span class="title function_">f</span>()</span><br></pre></td></tr></table></figure>
+
+<p>JavaScript 允许在函数体内部，引用当前环境的其他变量。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> f = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(x);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，函数体里面使用了变量<code>x</code>。该变量由运行环境提供。</p>
+<p>现在问题就来了，由于函数可以在不同的运行环境执行，所以需要有一种机制，能够在函数体内部获得当前的运行环境（context）。所以，<code>this</code>就出现了，它的设计目的就是在函数体内部，指代函数当前的运行环境。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> f = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">x</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，函数体里面的<code>this.x</code>就是指当前运行环境的<code>x</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> f = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">x</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="attr">f</span>: f,</span><br><span class="line">  <span class="attr">x</span>: <span class="number">2</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单独执行</span></span><br><span class="line"><span class="title function_">f</span>() <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// obj 环境执行</span></span><br><span class="line">obj.<span class="title function_">f</span>() <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，函数<code>f</code>在全局环境执行，<code>this.x</code>指向全局环境的<code>x</code>；在<code>obj</code>环境执行，<code>this.x</code>指向<code>obj.x</code>。</p>
+<h3 id="0x0102-this的使用场合"><a href="#0x0102-this的使用场合" class="headerlink" title="0x0102 this的使用场合"></a>0x0102 this的使用场合</h3><p><code>this</code>主要有以下几个使用场合。</p>
+<p><strong>（1）全局环境</strong></p>
+<p>全局环境使用<code>this</code>，它指的就是顶层对象<code>window</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">this</span> === <span class="variable language_">window</span> <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span> === <span class="variable language_">window</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">f</span>() <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码说明，不管是不是在函数内部，只要是在全局环境下运行，<code>this</code>就是指顶层对象<code>window</code>。</p>
+<p><strong>（2）构造函数</strong></p>
+<p>构造函数中的<code>this</code>，指的是实例对象。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title class_">Obj</span> = <span class="keyword">function</span> (<span class="params">p</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">p</span> = p;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码定义了一个构造函数<code>Obj</code>。由于<code>this</code>指向实例对象，所以在构造函数内部定义<code>this.p</code>，就相当于定义实例对象有一个<code>p</code>属性。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="title class_">Obj</span>(<span class="string">&#x27;Hello World!&#x27;</span>);</span><br><span class="line">o.<span class="property">p</span> <span class="comment">// &quot;Hello World!&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>（3）对象的方法</strong></p>
+<p>如果对象的方法里面包含<code>this</code>，<code>this</code>的指向就是方法运行时所在的对象。该方法赋值给另一个对象，就会改变<code>this</code>的指向。</p>
+<p>但是，这条规则很不容易把握。请看下面的代码。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj =&#123;</span><br><span class="line">  <span class="attr">foo</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj.<span class="title function_">foo</span>() <span class="comment">// obj</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>obj.foo</code>方法执行时，它内部的<code>this</code>指向<code>obj</code>。</p>
+<p>但是，下面这几种用法，都会改变<code>this</code>的指向。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 情况一</span></span><br><span class="line">(obj.<span class="property">foo</span> = obj.<span class="property">foo</span>)() <span class="comment">// window</span></span><br><span class="line"><span class="comment">// 情况二</span></span><br><span class="line">(<span class="literal">false</span> || obj.<span class="property">foo</span>)() <span class="comment">// window</span></span><br><span class="line"><span class="comment">// 情况三</span></span><br><span class="line">(<span class="number">1</span>, obj.<span class="property">foo</span>)() <span class="comment">// window</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>obj.foo</code>就是一个值。这个值真正调用的时候，运行环境已经不是<code>obj</code>了，而是全局环境，所以<code>this</code>不再指向<code>obj</code>。</p>
+<p>可以这样理解，JavaScript 引擎内部，<code>obj</code>和<code>obj.foo</code>储存在两个内存地址，称为地址一和地址二。<code>obj.foo()</code>这样调用时，是从地址一调用地址二，因此地址二的运行环境是地址一，<code>this</code>指向<code>obj</code>。但是，上面三种情况，都是直接取出地址二进行调用，这样的话，运行环境就是全局环境，因此<code>this</code>指向全局环境。上面三种情况等同于下面的代码。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 情况一</span></span><br><span class="line">(obj.<span class="property">foo</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;)()</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line">(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 情况二</span></span><br><span class="line">(<span class="literal">false</span> || <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 情况三</span></span><br><span class="line">(<span class="number">1</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>this</code>所在的方法不在对象的第一层，这时<code>this</code>只是指向当前一层的对象，而不会继承更上面的层。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  <span class="attr">p</span>: <span class="string">&#x27;Hello&#x27;</span>,</span><br><span class="line">  <span class="attr">b</span>: &#123;</span><br><span class="line">    <span class="attr">m</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">p</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">a.<span class="property">b</span>.<span class="title function_">m</span>() <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>a.b.m</code>方法在<code>a</code>对象的第二层，该方法内部的<code>this</code>不是指向<code>a</code>，而是指向<code>a.b</code>，因为实际执行的是下面的代码。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> b = &#123;</span><br><span class="line">  <span class="attr">m</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">p</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  <span class="attr">p</span>: <span class="string">&#x27;Hello&#x27;</span>,</span><br><span class="line">  <span class="attr">b</span>: b</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">(a.<span class="property">b</span>).<span class="title function_">m</span>() <span class="comment">// 等同于 b.m()</span></span><br></pre></td></tr></table></figure>
+
+<p>如果要达到预期效果，只有写成下面这样。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  <span class="attr">b</span>: &#123;</span><br><span class="line">    <span class="attr">m</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">p</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">p</span>: <span class="string">&#x27;Hello&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>如果这时将嵌套对象内部的方法赋值给一个变量，<code>this</code>依然会指向全局对象。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  <span class="attr">b</span>: &#123;</span><br><span class="line">    <span class="attr">m</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">p</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">p</span>: <span class="string">&#x27;Hello&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> hello = a.<span class="property">b</span>.<span class="property">m</span>;</span><br><span class="line"><span class="title function_">hello</span>() <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>m</code>是多层对象内部的一个方法。为求简便，将其赋值给<code>hello</code>变量，结果调用时，<code>this</code>指向了顶层对象。为了避免这个问题，可以只将<code>m</code>所在的对象赋值给<code>hello</code>，这样调用时，<code>this</code>的指向就不会变。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> hello = a.<span class="property">b</span>;</span><br><span class="line">hello.<span class="title function_">m</span>() <span class="comment">// Hello</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="0x0103-this的使用注意事项"><a href="#0x0103-this的使用注意事项" class="headerlink" title="0x0103 this的使用注意事项"></a>0x0103 this的使用注意事项</h3><h4 id="0x010301-避免多层-this"><a href="#0x010301-避免多层-this" class="headerlink" title="0x010301 避免多层 this"></a>0x010301 避免多层 this</h4><p>由于<code>this</code>的指向是不确定的，所以切勿在函数中包含多层的<code>this</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">  <span class="attr">f1</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">    <span class="keyword">var</span> f2 = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">    &#125;();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">o.<span class="title function_">f1</span>()</span><br><span class="line"><span class="comment">// Object</span></span><br><span class="line"><span class="comment">// Window</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码包含两层<code>this</code>，结果运行后，第一层指向对象<code>o</code>，第二层指向全局对象，因为实际执行的是下面的代码。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> temp = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">  <span class="attr">f1</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">    <span class="keyword">var</span> f2 = <span class="title function_">temp</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一个解决方法是在第二层改用一个指向外层<code>this</code>的变量。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">  <span class="attr">f1</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">    <span class="keyword">var</span> that = <span class="variable language_">this</span>;</span><br><span class="line">    <span class="keyword">var</span> f2 = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(that);</span><br><span class="line">    &#125;();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">o.<span class="title function_">f1</span>()</span><br><span class="line"><span class="comment">// Object</span></span><br><span class="line"><span class="comment">// Object</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码定义了变量<code>that</code>，固定指向外层的<code>this</code>，然后在内层使用<code>that</code>，就不会发生<code>this</code>指向的改变。</p>
+<p>事实上，使用一个变量固定<code>this</code>的值，然后内层函数调用这个变量，是非常常见的做法，请务必掌握。</p>
+<p>JavaScript 提供了严格模式，也可以硬性避免这种问题。严格模式下，如果函数内部的<code>this</code>指向顶层对象，就会报错。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> counter = &#123;</span><br><span class="line">  <span class="attr">count</span>: <span class="number">0</span></span><br><span class="line">&#125;;</span><br><span class="line">counter.<span class="property">inc</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="string">&#x27;use strict&#x27;</span>;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">count</span>++</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> f = counter.<span class="property">inc</span>;</span><br><span class="line"><span class="title function_">f</span>()</span><br><span class="line"><span class="comment">// TypeError: Cannot read property &#x27;count&#x27; of undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>inc</code>方法通过<code>&#39;use strict&#39;</code>声明采用严格模式，这时内部的<code>this</code>一旦指向顶层对象，就会报错。</p>
+<h4 id="0x010302-避免数组处理方法中的this"><a href="#0x010302-避免数组处理方法中的this" class="headerlink" title="0x010302 避免数组处理方法中的this"></a>0x010302 避免数组处理方法中的this</h4><p>数组的<code>map</code>和<code>foreach</code>方法，允许提供一个函数作为参数。这个函数内部不应该使用<code>this</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">  <span class="attr">v</span>: <span class="string">&#x27;hello&#x27;</span>,</span><br><span class="line">  <span class="attr">p</span>: [ <span class="string">&#x27;a1&#x27;</span>, <span class="string">&#x27;a2&#x27;</span> ],</span><br><span class="line">  <span class="attr">f</span>: <span class="keyword">function</span> <span class="title function_">f</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">p</span>.<span class="title function_">forEach</span>(<span class="keyword">function</span> (<span class="params">item</span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">v</span> + <span class="string">&#x27; &#x27;</span> + item);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">o.<span class="title function_">f</span>()</span><br><span class="line"><span class="comment">// undefined a1</span></span><br><span class="line"><span class="comment">// undefined a2</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>foreach</code>方法的回调函数中的<code>this</code>，其实是指向<code>window</code>对象，因此取不到<code>o.v</code>的值。原因跟上一段的多层<code>this</code>是一样的，就是内层的<code>this</code>不指向外部，而指向顶层对象。</p>
+<p>解决这个问题的一种方法，就是前面提到的，使用中间变量固定<code>this</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">  <span class="attr">v</span>: <span class="string">&#x27;hello&#x27;</span>,</span><br><span class="line">  <span class="attr">p</span>: [ <span class="string">&#x27;a1&#x27;</span>, <span class="string">&#x27;a2&#x27;</span> ],</span><br><span class="line">  <span class="attr">f</span>: <span class="keyword">function</span> <span class="title function_">f</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> that = <span class="variable language_">this</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">p</span>.<span class="title function_">forEach</span>(<span class="keyword">function</span> (<span class="params">item</span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(that.<span class="property">v</span>+<span class="string">&#x27; &#x27;</span>+item);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">o.<span class="title function_">f</span>()</span><br><span class="line"><span class="comment">// hello a1</span></span><br><span class="line"><span class="comment">// hello a2</span></span><br></pre></td></tr></table></figure>
+
+<p>另一种方法是将<code>this</code>当作<code>foreach</code>方法的第二个参数，固定它的运行环境。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">  <span class="attr">v</span>: <span class="string">&#x27;hello&#x27;</span>,</span><br><span class="line">  <span class="attr">p</span>: [ <span class="string">&#x27;a1&#x27;</span>, <span class="string">&#x27;a2&#x27;</span> ],</span><br><span class="line">  <span class="attr">f</span>: <span class="keyword">function</span> <span class="title function_">f</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">p</span>.<span class="title function_">forEach</span>(<span class="keyword">function</span> (<span class="params">item</span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">v</span> + <span class="string">&#x27; &#x27;</span> + item);</span><br><span class="line">    &#125;, <span class="variable language_">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">o.<span class="title function_">f</span>()</span><br><span class="line"><span class="comment">// hello a1</span></span><br><span class="line"><span class="comment">// hello a2</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="0x010303-避免回调函数中的this"><a href="#0x010303-避免回调函数中的this" class="headerlink" title="0x010303 避免回调函数中的this"></a>0x010303 避免回调函数中的this</h4><p>回调函数中的<code>this</code>往往会改变指向，最好避免使用。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line">o.<span class="property">f</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span> === o);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// jQuery 的写法</span></span><br><span class="line">$(<span class="string">&#x27;#button&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, o.<span class="property">f</span>);</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，点击按钮以后，控制台会显示<code>false</code>。原因是此时<code>this</code>不再指向<code>o</code>对象，而是指向按钮的 DOM 对象，因为<code>f</code>方法是在按钮对象的环境中被调用的。这种细微的差别，很容易在编程中忽视，导致难以察觉的错误。</p>
+<p>为了解决这个问题，可以采用下面的一些方法对<code>this</code>进行绑定，也就是使得<code>this</code>固定指向某个对象，减少不确定性。</p>
+<h3 id="0x0104-绑定this的方法"><a href="#0x0104-绑定this的方法" class="headerlink" title="0x0104 绑定this的方法"></a>0x0104 绑定this的方法</h3><p><code>this</code>的动态切换，固然为 JavaScript 创造了巨大的灵活性，但也使得编程变得困难和模糊。有时，需要把<code>this</code>固定下来，避免出现意想不到的情况。JavaScript 提供了<code>call</code>、<code>apply</code>、<code>bind</code>这三个方法，来切换&#x2F;固定<code>this</code>的指向。</p>
+<h4 id="0x010401-Function-prototype-call"><a href="#0x010401-Function-prototype-call" class="headerlink" title="0x010401 Function.prototype.call()"></a>0x010401 Function.prototype.call()</h4><p>函数实例的<code>call</code>方法，可以指定函数内部<code>this</code>的指向（即函数执行时所在的作用域），然后在所指定的作用域中，调用该函数。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title function_">f</span>() === <span class="variable language_">window</span> <span class="comment">// true</span></span><br><span class="line">f.<span class="title function_">call</span>(obj) === obj <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，全局环境运行函数<code>f</code>时，<code>this</code>指向全局环境（浏览器为<code>window</code>对象）；<code>call</code>方法可以改变<code>this</code>的指向，指定<code>this</code>指向对象<code>obj</code>，然后在对象<code>obj</code>的作用域中运行函数<code>f</code>。</p>
+<p><code>call</code>方法的参数，应该是一个对象。如果参数为空、<code>null</code>和<code>undefined</code>，则默认传入全局对象。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">123</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">n</span>: <span class="number">456</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">a</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">n</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a.<span class="title function_">call</span>() <span class="comment">// 123</span></span><br><span class="line">a.<span class="title function_">call</span>(<span class="literal">null</span>) <span class="comment">// 123</span></span><br><span class="line">a.<span class="title function_">call</span>(<span class="literal">undefined</span>) <span class="comment">// 123</span></span><br><span class="line">a.<span class="title function_">call</span>(<span class="variable language_">window</span>) <span class="comment">// 123</span></span><br><span class="line">a.<span class="title function_">call</span>(obj) <span class="comment">// 456</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>a</code>函数中的<code>this</code>关键字，如果指向全局对象，返回结果为<code>123</code>。如果使用<code>call</code>方法将<code>this</code>关键字指向<code>obj</code>对象，返回结果为<code>456</code>。可以看到，如果<code>call</code>方法没有参数，或者参数为<code>null</code>或<code>undefined</code>，则等同于指向全局对象。</p>
+<p>如果<code>call</code>方法的参数是一个原始值，那么这个原始值会自动转成对应的包装对象，然后传入<code>call</code>方法。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> f = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">f.<span class="title function_">call</span>(<span class="number">5</span>)</span><br><span class="line"><span class="comment">// Number &#123;[[PrimitiveValue]]: 5&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>call</code>的参数为<code>5</code>，不是对象，会被自动转成包装对象（<code>Number</code>的实例），绑定<code>f</code>内部的<code>this</code>。</p>
+<p><code>call</code>方法还可以接受多个参数。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">func.<span class="title function_">call</span>(thisValue, arg1, arg2, ...)</span><br></pre></td></tr></table></figure>
+
+<p><code>call</code>的第一个参数就是<code>this</code>所要指向的那个对象，后面的参数则是函数调用时所需的参数。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">a, b</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add.<span class="title function_">call</span>(<span class="variable language_">this</span>, <span class="number">1</span>, <span class="number">2</span>) <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>call</code>方法指定函数<code>add</code>内部的<code>this</code>绑定当前环境（对象），并且参数为<code>1</code>和<code>2</code>，因此函数<code>add</code>运行后得到<code>3</code>。</p>
+<p><code>call</code>方法的一个应用是调用对象的原生方法。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">obj.<span class="title function_">hasOwnProperty</span>(<span class="string">&#x27;toString&#x27;</span>) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 覆盖掉继承的 hasOwnProperty 方法</span></span><br><span class="line">obj.<span class="property">hasOwnProperty</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br><span class="line">obj.<span class="title function_">hasOwnProperty</span>(<span class="string">&#x27;toString&#x27;</span>) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">hasOwnProperty</span>.<span class="title function_">call</span>(obj, <span class="string">&#x27;toString&#x27;</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>hasOwnProperty</code>是<code>obj</code>对象继承的方法，如果这个方法一旦被覆盖，就不会得到正确结果。<code>call</code>方法可以解决这个问题，它将<code>hasOwnProperty</code>方法的原始定义放到<code>obj</code>对象上执行，这样无论<code>obj</code>上有没有同名方法，都不会影响结果。</p>
+<h4 id="0x010402-Function-prototype-apply"><a href="#0x010402-Function-prototype-apply" class="headerlink" title="0x010402 Function.prototype.apply()"></a>0x010402 Function.prototype.apply()</h4><p><code>apply</code>方法的作用与<code>call</code>方法类似，也是改变<code>this</code>指向，然后再调用该函数。唯一的区别就是，它接收一个数组作为函数执行时的参数，使用格式如下。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">func.<span class="title function_">apply</span>(thisValue, [arg1, arg2, ...])</span><br></pre></td></tr></table></figure>
+
+<p><code>apply</code>方法的第一个参数也是<code>this</code>所要指向的那个对象，如果设为<code>null</code>或<code>undefined</code>，则等同于指定全局对象。第二个参数则是一个数组，该数组的所有成员依次作为参数，传入原函数。原函数的参数，在<code>call</code>方法中必须一个个添加，但是在<code>apply</code>方法中，必须以数组形式添加。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params">x, y</span>)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(x + y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f.<span class="title function_">call</span>(<span class="literal">null</span>, <span class="number">1</span>, <span class="number">1</span>) <span class="comment">// 2</span></span><br><span class="line">f.<span class="title function_">apply</span>(<span class="literal">null</span>, [<span class="number">1</span>, <span class="number">1</span>]) <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>f</code>函数本来接受两个参数，使用<code>apply</code>方法以后，就变成可以接受一个数组作为参数。</p>
+<p>利用这一点，可以做一些有趣的应用。</p>
+<p><strong>（1）找出数组最大元素</strong></p>
+<p>JavaScript 不提供找出数组最大元素的函数。结合使用<code>apply</code>方法和<code>Math.max</code>方法，就可以返回数组的最大元素。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">10</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">15</span>, <span class="number">9</span>];</span><br><span class="line"><span class="title class_">Math</span>.<span class="property">max</span>.<span class="title function_">apply</span>(<span class="literal">null</span>, a) <span class="comment">// 15</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>（2）将数组的空元素变为<code>undefined</code></strong></p>
+<p>通过<code>apply</code>方法，利用<code>Array</code>构造函数将数组的空元素变成<code>undefined</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Array</span>.<span class="title function_">apply</span>(<span class="literal">null</span>, [<span class="string">&#x27;a&#x27;</span>, ,<span class="string">&#x27;b&#x27;</span>])</span><br><span class="line"><span class="comment">// [ &#x27;a&#x27;, undefined, &#x27;b&#x27; ]</span></span><br></pre></td></tr></table></figure>
+
+<p>空元素与<code>undefined</code>的差别在于，数组的<code>forEach</code>方法会跳过空元素，但是不会跳过<code>undefined</code>。因此，遍历内部元素的时候，会得到不同的结果。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="string">&#x27;a&#x27;</span>, , <span class="string">&#x27;b&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">print</span>(<span class="params">i</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a.<span class="title function_">forEach</span>(print)</span><br><span class="line"><span class="comment">// a</span></span><br><span class="line"><span class="comment">// b</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Array</span>.<span class="title function_">apply</span>(<span class="literal">null</span>, a).<span class="title function_">forEach</span>(print)</span><br><span class="line"><span class="comment">// a</span></span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"><span class="comment">// b</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>（3）转换类似数组的对象</strong></p>
+<p>另外，利用数组对象的<code>slice</code>方法，可以将一个类似数组的对象（比如<code>arguments</code>对象）转为真正的数组。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">slice</span>.<span class="title function_">apply</span>(&#123;<span class="number">0</span>: <span class="number">1</span>, <span class="attr">length</span>: <span class="number">1</span>&#125;) <span class="comment">// [1]</span></span><br><span class="line"><span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">slice</span>.<span class="title function_">apply</span>(&#123;<span class="number">0</span>: <span class="number">1</span>&#125;) <span class="comment">// []</span></span><br><span class="line"><span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">slice</span>.<span class="title function_">apply</span>(&#123;<span class="number">0</span>: <span class="number">1</span>, <span class="attr">length</span>: <span class="number">2</span>&#125;) <span class="comment">// [1, undefined]</span></span><br><span class="line"><span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">slice</span>.<span class="title function_">apply</span>(&#123;<span class="attr">length</span>: <span class="number">1</span>&#125;) <span class="comment">// [undefined]</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码的<code>apply</code>方法的参数都是对象，但是返回结果都是数组，这就起到了将对象转成数组的目的。从上面代码可以看到，这个方法起作用的前提是，被处理的对象必须有<code>length</code>属性，以及相对应的数字键。</p>
+<p><strong>（4）绑定回调函数的对象</strong></p>
+<p>前面的按钮点击事件的例子，可以改写如下。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line"></span><br><span class="line">o.<span class="property">f</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span> === o);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">function</span> (<span class="params"></span>)&#123;</span><br><span class="line">  o.<span class="property">f</span>.<span class="title function_">apply</span>(o);</span><br><span class="line">  <span class="comment">// 或者 o.f.call(o);</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// jQuery 的写法</span></span><br><span class="line">$(<span class="string">&#x27;#button&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, f);</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，点击按钮以后，控制台将会显示<code>true</code>。由于<code>apply()</code>方法（或者<code>call()</code>方法）不仅绑定函数执行时所在的对象，还会立即执行函数，因此不得不把绑定语句写在一个函数体内。更简洁的写法是采用下面介绍的<code>bind()</code>方法。</p>
+<h4 id="0x010403-Function-prototype-bind"><a href="#0x010403-Function-prototype-bind" class="headerlink" title="0x010403 Function.prototype.bind()"></a>0x010403 Function.prototype.bind()</h4><p><code>bind()</code>方法用于将函数体内的<code>this</code>绑定到某个对象，然后返回一个新函数。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">d.<span class="title function_">getTime</span>() <span class="comment">// 1481869925657</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> print = d.<span class="property">getTime</span>;</span><br><span class="line"><span class="title function_">print</span>() <span class="comment">// Uncaught TypeError: this is not a Date object.</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，我们将<code>d.getTime()</code>方法赋给变量<code>print</code>，然后调用<code>print()</code>就报错了。这是因为<code>getTime()</code>方法内部的<code>this</code>，绑定<code>Date</code>对象的实例，赋给变量<code>print</code>以后，内部的<code>this</code>已经不指向<code>Date</code>对象的实例了。</p>
+<p><code>bind()</code>方法可以解决这个问题。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> print = d.<span class="property">getTime</span>.<span class="title function_">bind</span>(d);</span><br><span class="line"><span class="title function_">print</span>() <span class="comment">// 1481869925657</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>bind()</code>方法将<code>getTime()</code>方法内部的<code>this</code>绑定到<code>d</code>对象，这时就可以安全地将这个方法赋值给其他变量了。</p>
+<p><code>bind</code>方法的参数就是所要绑定<code>this</code>的对象，下面是一个更清晰的例子。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> counter = &#123;</span><br><span class="line">  <span class="attr">count</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">inc</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">count</span>++;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> func = counter.<span class="property">inc</span>.<span class="title function_">bind</span>(counter);</span><br><span class="line"><span class="title function_">func</span>();</span><br><span class="line">counter.<span class="property">count</span> <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>counter.inc()</code>方法被赋值给变量<code>func</code>。这时必须用<code>bind()</code>方法将<code>inc()</code>内部的<code>this</code>，绑定到<code>counter</code>，否则就会出错。</p>
+<p><code>this</code>绑定到其他对象也是可以的。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> counter = &#123;</span><br><span class="line">  <span class="attr">count</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">inc</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">count</span>++;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="attr">count</span>: <span class="number">100</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> func = counter.<span class="property">inc</span>.<span class="title function_">bind</span>(obj);</span><br><span class="line"><span class="title function_">func</span>();</span><br><span class="line">obj.<span class="property">count</span> <span class="comment">// 101</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>bind()</code>方法将<code>inc()</code>方法内部的<code>this</code>，绑定到<code>obj</code>对象。结果调用<code>func</code>函数以后，递增的就是<code>obj</code>内部的<code>count</code>属性。</p>
+<p><code>bind()</code>还可以接受更多的参数，将这些参数绑定原函数的参数。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> add = <span class="keyword">function</span> (<span class="params">x, y</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> x * <span class="variable language_">this</span>.<span class="property">m</span> + y * <span class="variable language_">this</span>.<span class="property">n</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="attr">m</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">n</span>: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newAdd = add.<span class="title function_">bind</span>(obj, <span class="number">5</span>);</span><br><span class="line"><span class="title function_">newAdd</span>(<span class="number">5</span>) <span class="comment">// 20</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>bind()</code>方法除了绑定<code>this</code>对象，还将<code>add()</code>函数的第一个参数<code>x</code>绑定成<code>5</code>，然后返回一个新函数<code>newAdd()</code>，这个函数只要再接受一个参数<code>y</code>就能运行了。</p>
+<p>如果<code>bind()</code>方法的第一个参数是<code>null</code>或<code>undefined</code>，等于将<code>this</code>绑定到全局对象，函数运行时<code>this</code>指向顶层对象（浏览器为<code>window</code>）。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">x, y</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> plus5 = add.<span class="title function_">bind</span>(<span class="literal">null</span>, <span class="number">5</span>);</span><br><span class="line"><span class="title function_">plus5</span>(<span class="number">10</span>) <span class="comment">// 15</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，函数<code>add()</code>内部并没有<code>this</code>，使用<code>bind()</code>方法的主要目的是绑定参数<code>x</code>，以后每次运行新函数<code>plus5()</code>，就只需要提供另一个参数<code>y</code>就够了。而且因为<code>add()</code>内部没有<code>this</code>，所以<code>bind()</code>的第一个参数是<code>null</code>，不过这里如果是其他对象，也没有影响。</p>
+<p><code>bind()</code>方法有一些使用注意点。</p>
+<p><strong>（1）每一次返回一个新函数</strong></p>
+<p><code>bind()</code>方法每运行一次，就返回一个新函数，这会产生一些问题。比如，监听事件的时候，不能写成下面这样。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">element.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, o.<span class="property">m</span>.<span class="title function_">bind</span>(o));</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>click</code>事件绑定<code>bind()</code>方法生成的一个匿名函数。这样会导致无法取消绑定，所以下面的代码是无效的。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">element.<span class="title function_">removeEventListener</span>(<span class="string">&#x27;click&#x27;</span>, o.<span class="property">m</span>.<span class="title function_">bind</span>(o));</span><br></pre></td></tr></table></figure>
+
+<p>正确的方法是写成下面这样：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> listener = o.<span class="property">m</span>.<span class="title function_">bind</span>(o);</span><br><span class="line">element.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, listener);</span><br><span class="line"><span class="comment">//  ...</span></span><br><span class="line">element.<span class="title function_">removeEventListener</span>(<span class="string">&#x27;click&#x27;</span>, listener);</span><br></pre></td></tr></table></figure>
+
+<p><strong>（2）结合回调函数使用</strong></p>
+<p>回调函数是 JavaScript 最常用的模式之一，但是一个常见的错误是，将包含<code>this</code>的方法直接当作回调函数。解决方法就是使用<code>bind()</code>方法，将<code>counter.inc()</code>绑定<code>counter</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> counter = &#123;</span><br><span class="line">  <span class="attr">count</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">inc</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="string">&#x27;use strict&#x27;</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">count</span>++;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">callIt</span>(<span class="params">callback</span>) &#123;</span><br><span class="line">  <span class="title function_">callback</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">callIt</span>(counter.<span class="property">inc</span>.<span class="title function_">bind</span>(counter));</span><br><span class="line">counter.<span class="property">count</span> <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>callIt()</code>方法会调用回调函数。这时如果直接把<code>counter.inc</code>传入，调用时<code>counter.inc()</code>内部的<code>this</code>就会指向全局对象。使用<code>bind()</code>方法将<code>counter.inc</code>绑定<code>counter</code>以后，就不会有这个问题，<code>this</code>总是指向<code>counter</code>。</p>
+<p>还有一种情况比较隐蔽，就是某些数组方法可以接受一个函数当作参数。这些函数内部的<code>this</code>指向，很可能也会出错。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">  <span class="attr">times</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">  <span class="attr">print</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">times</span>.<span class="title function_">forEach</span>(<span class="keyword">function</span> (<span class="params">n</span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj.<span class="title function_">print</span>()</span><br><span class="line"><span class="comment">// 没有任何输出</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，<code>obj.print</code>内部<code>this.times</code>的<code>this</code>是指向<code>obj</code>的，这个没有问题。但是，<code>forEach()</code>方法的回调函数内部的<code>this.name</code>却是指向全局对象，导致没有办法取到值。稍微改动一下，就可以看得更清楚。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">obj.<span class="property">print</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">times</span>.<span class="title function_">forEach</span>(<span class="keyword">function</span> (<span class="params">n</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span> === <span class="variable language_">window</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj.<span class="title function_">print</span>()</span><br><span class="line"><span class="comment">// true</span></span><br><span class="line"><span class="comment">// true</span></span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>解决这个问题，也是通过<code>bind()</code>方法绑定<code>this</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">obj.<span class="property">print</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">times</span>.<span class="title function_">forEach</span>(<span class="keyword">function</span> (<span class="params">n</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span>);</span><br><span class="line">  &#125;.<span class="title function_">bind</span>(<span class="variable language_">this</span>));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj.<span class="title function_">print</span>()</span><br><span class="line"><span class="comment">// 张三</span></span><br><span class="line"><span class="comment">// 张三</span></span><br><span class="line"><span class="comment">// 张三</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>（3）结合<code>call()</code>方法使用</strong></p>
+<p>利用<code>bind()</code>方法，可以改写一些 JavaScript 原生方法的使用形式，以数组的<code>slice()</code>方法为例。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].<span class="title function_">slice</span>(<span class="number">0</span>, <span class="number">1</span>) <span class="comment">// [1]</span></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">slice</span>.<span class="title function_">call</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="number">0</span>, <span class="number">1</span>) <span class="comment">// [1]</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的代码中，数组的<code>slice</code>方法从<code>[1, 2, 3]</code>里面，按照指定的开始位置和结束位置，切分出另一个数组。这样做的本质是在<code>[1, 2, 3]</code>上面调用<code>Array.prototype.slice()</code>方法，因此可以用<code>call</code>方法表达这个过程，得到同样的结果。</p>
+<p><code>call()</code>方法实质上是调用<code>Function.prototype.call()</code>方法，因此上面的表达式可以用<code>bind()</code>方法改写。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> slice = <span class="title class_">Function</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">call</span>.<span class="title function_">bind</span>(<span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">slice</span>);</span><br><span class="line"><span class="title function_">slice</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="number">0</span>, <span class="number">1</span>) <span class="comment">// [1]</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码的含义就是，将<code>Array.prototype.slice</code>变成<code>Function.prototype.call</code>方法所在的对象，调用时就变成了<code>Array.prototype.slice.call</code>。类似的写法还可以用于其他数组方法。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> push = <span class="title class_">Function</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">call</span>.<span class="title function_">bind</span>(<span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">push</span>);</span><br><span class="line"><span class="keyword">var</span> pop = <span class="title class_">Function</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">call</span>.<span class="title function_">bind</span>(<span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">pop</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span> ,<span class="number">2</span> ,<span class="number">3</span>];</span><br><span class="line"><span class="title function_">push</span>(a, <span class="number">4</span>)</span><br><span class="line">a <span class="comment">// [1, 2, 3, 4]</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">pop</span>(a)</span><br><span class="line">a <span class="comment">// [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+
+<p>如果再进一步，将<code>Function.prototype.call</code>方法绑定到<code>Function.prototype.bind</code>对象，就意味着<code>bind</code>的调用形式也可以被改写。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">v</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> o = &#123; <span class="attr">v</span>: <span class="number">123</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> bind = <span class="title class_">Function</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">call</span>.<span class="title function_">bind</span>(<span class="title class_">Function</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">bind</span>);</span><br><span class="line"><span class="title function_">bind</span>(f, o)() <span class="comment">// 123</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码的含义就是，将<code>Function.prototype.bind</code>方法绑定在<code>Function.prototype.call</code>上面，所以<code>bind</code>方法就可以直接使用，不需要在函数实例上使用。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">q1jun</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://q1jun.cn/2021/09/01/8c49d765b54e-q1jun/">http://q1jun.cn/2021/09/01/8c49d765b54e-q1jun/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://q1jun.cn" target="_blank">q1jun's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><a class="post-meta__tags" href="/tags/JavaScript/">JavaScript</a><a class="post-meta__tags" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">小程序</a><a class="post-meta__tags" href="/tags/WeChat/">WeChat</a></div><div class="post_share"><div class="social-share" data-image="/img/wallpaper3.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/09/03/50dfe4d83351-q1jun/"><img class="prev-cover" src="/img/wallpaper.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">微信小程序学习笔记 04</div></div></a></div><div class="next-post pull-right"><a href="/2021/08/31/aba664882fa9-q1jun/"><img class="next-cover" src="/img/wallpaper4.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">微信小程序学习笔记 02</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/08/28/b4442a413577-q1jun/" title="微信小程序学习笔记 01"><img class="cover" src="/img/wallpaper7.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-28</div><div class="title">微信小程序学习笔记 01</div></div></a></div><div><a href="/2021/08/31/aba664882fa9-q1jun/" title="微信小程序学习笔记 02"><img class="cover" src="/img/wallpaper4.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-31</div><div class="title">微信小程序学习笔记 02</div></div></a></div><div><a href="/2021/09/03/50dfe4d83351-q1jun/" title="微信小程序学习笔记 04"><img class="cover" src="/img/wallpaper.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-03</div><div class="title">微信小程序学习笔记 04</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">Giscus</span><span class="switch-btn"></span><span class="second-comment">Livere</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NTkwMi8zMjM2Ng=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-03"><span class="toc-text">微信小程序学习笔记 03</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-this-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">0x01 this 关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x0101-this%E7%9A%84%E5%AE%9E%E8%B4%A8"><span class="toc-text">0x0101 this的实质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x0102-this%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E5%90%88"><span class="toc-text">0x0102 this的使用场合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x0103-this%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">0x0103 this的使用注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#0x010301-%E9%81%BF%E5%85%8D%E5%A4%9A%E5%B1%82-this"><span class="toc-text">0x010301 避免多层 this</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0x010302-%E9%81%BF%E5%85%8D%E6%95%B0%E7%BB%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%E4%B8%AD%E7%9A%84this"><span class="toc-text">0x010302 避免数组处理方法中的this</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0x010303-%E9%81%BF%E5%85%8D%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84this"><span class="toc-text">0x010303 避免回调函数中的this</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x0104-%E7%BB%91%E5%AE%9Athis%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">0x0104 绑定this的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#0x010401-Function-prototype-call"><span class="toc-text">0x010401 Function.prototype.call()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0x010402-Function-prototype-apply"><span class="toc-text">0x010402 Function.prototype.apply()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0x010403-Function-prototype-bind"><span class="toc-text">0x010403 Function.prototype.bind()</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2022 By q1jun</div><div class="footer_custom_text"><span>备案号：赣ICP备2021005418号-2</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script><script>function loadGiscus () {
+  let nowTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+
+  const config = Object.assign({
+    src: 'https://giscus.app/client.js',
+    'data-repo': 'q1jun/discussionRepo',
+    'data-repo-id': 'R_kgDOHF7Pfg',
+    'data-category-id': 'DIC_kwDOHF7Pfs4COV0X',
+    'data-mapping': 'pathname',
+    'data-theme': nowTheme,
+    'data-reactions-enabled': '1',
+    crossorigin: 'anonymous',
+    async: true
+  },null)
+
+  let ele = document.createElement('script')
+  for (let key in config) {
+    ele.setAttribute(key, config[key])
+  }
+  document.getElementById('giscus-wrap').insertAdjacentElement('afterbegin',ele)
+}
+
+function changeGiscusTheme () {
+  const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+
+  function sendMessage(message) {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+  }
+
+  sendMessage({
+    setConfig: {
+      theme: theme
+    }
+  });
+}
+
+if ('Giscus' === 'Giscus' || !false) {
+  if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+  else loadGiscus()
+} else {
+  function loadOtherComment () {
+    loadGiscus()
+  }
+}</script><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Giscus' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script></div></body></html>
