@@ -670,20 +670,6 @@
   </url>
   
   <url>
-    <loc>http://q1jun.cn/tags/%E5%89%8D%E7%AB%AF/</loc>
-    <lastmod>2022-07-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://q1jun.cn/tags/%E5%8A%A8%E7%94%BB/</loc>
-    <lastmod>2022-07-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://q1jun.cn/tags/Python/</loc>
     <lastmod>2022-07-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -740,6 +726,13 @@
   </url>
   
   <url>
+    <loc>http://q1jun.cn/tags/MySql/</loc>
+    <lastmod>2022-07-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://q1jun.cn/tags/Nginx/</loc>
     <lastmod>2022-07-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -747,7 +740,14 @@
   </url>
   
   <url>
-    <loc>http://q1jun.cn/tags/MySql/</loc>
+    <loc>http://q1jun.cn/tags/%E5%89%8D%E7%AB%AF/</loc>
+    <lastmod>2022-07-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://q1jun.cn/tags/%E5%8A%A8%E7%94%BB/</loc>
     <lastmod>2022-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -796,13 +796,6 @@
   </url>
   
   <url>
-    <loc>http://q1jun.cn/tags/TCP-IP/</loc>
-    <lastmod>2022-07-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://q1jun.cn/tags/GoLang/</loc>
     <lastmod>2022-07-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -824,7 +817,7 @@
   </url>
   
   <url>
-    <loc>http://q1jun.cn/tags/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://q1jun.cn/tags/TCP-IP/</loc>
     <lastmod>2022-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -832,6 +825,13 @@
   
   <url>
     <loc>http://q1jun.cn/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <lastmod>2022-07-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://q1jun.cn/tags/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2022-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1057,13 +1057,6 @@
   </url>
   
   <url>
-    <loc>http://q1jun.cn/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2022-07-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://q1jun.cn/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Crypto/</loc>
     <lastmod>2022-07-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -1072,6 +1065,13 @@
   
   <url>
     <loc>http://q1jun.cn/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Misc/</loc>
+    <lastmod>2022-07-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://q1jun.cn/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2022-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
