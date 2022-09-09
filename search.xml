@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Typora安装和破解教程</title>
+      <link href="/2022/09/10/759381d60bc2-q1jun/"/>
+      <url>/2022/09/10/759381d60bc2-q1jun/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Typora安装和破解教程"><a href="#Typora安装和破解教程" class="headerlink" title="Typora安装和破解教程"></a>Typora安装和破解教程</h2><blockquote><p>Typora下载：<a target="_blank" rel="noopener" href="https://cloud.q1jun.cn/s/ObCr">Typora_0.11.18.exe - Q1jun Cloud</a></p><p>替换文件：<a target="_blank" rel="noopener" href="https://cloud.q1jun.cn/s/aLiy">TyporaApp.zip - Q1jun Cloud</a></p></blockquote><h3 id="1-安装Typora-0-11-18版本-仅支持"><a href="#1-安装Typora-0-11-18版本-仅支持" class="headerlink" title="1. 安装Typora_0.11.18版本(仅支持)"></a>1. 安装Typora_0.11.18版本(仅支持)</h3><p>从我给的链接下载安装包进行安装。</p><p>安装成功后会提示报错，需要下载新的版本，直接无视并关闭页面进入下一步。</p><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/img/image-20220909235453110.png" alt="image-20220909235453110"></p><h3 id="2-替换文件进行破解"><a href="#2-替换文件进行破解" class="headerlink" title="2. 替换文件进行破解"></a>2. 替换文件进行破解</h3><p>下载第二个链接中的压缩包<code>TyporaApp.zip</code>,将其中2099文件夹中的文件<code>app.asar</code>替换掉安装Typora文件夹中的<code>\Typora\resources\app.asar</code>文件。</p><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/img/image-20220909235826341.png" alt="image-20220909235826341"></p><p>提取出来：</p><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/img/image-20220909235849519.png" alt="image-20220909235849519"></p><p>找到Typora的安装文件夹：</p><blockquote><p>方法：安装完<code>Typora</code>后在桌面会有图标，右击图标，点击<kbd>打开文件位置</kbd>，找到安装的具体目录。（如果还是快捷方式，则重复本步骤）</p></blockquote><p>找到<code>app.asar</code>文件，并将其用压缩包中的文件替换。</p><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/img/image-20220910000139086.png" alt="image-20220910000139086"></p><h3 id="3-打开Typora，完成安装和破解"><a href="#3-打开Typora，完成安装和破解" class="headerlink" title="3. 打开Typora，完成安装和破解"></a>3. 打开Typora，完成安装和破解</h3><p>重新打开Typora，完成破解安装。</p><p>本教程仅供参考学习，请勿用作商业用途！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Doc </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> Typora </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>敏感信息脱敏函数</title>
       <link href="/2022/09/08/e50cd82e9e0d-q1jun/"/>
       <url>/2022/09/08/e50cd82e9e0d-q1jun/</url>
