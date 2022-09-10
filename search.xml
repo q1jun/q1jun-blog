@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>记录一次安装Fedora</title>
+      <link href="/2022/09/10/cc0910243dd9-q1jun/"/>
+      <url>/2022/09/10/cc0910243dd9-q1jun/</url>
+      
+        <content type="html"><![CDATA[<h2 id="记录一次安装Fedora"><a href="#记录一次安装Fedora" class="headerlink" title="记录一次安装Fedora"></a>记录一次安装Fedora</h2><p>Fedora是一个Linux发行版，是一款由全球社区爱好者构建的面向日常应用的快速、稳定、强大的操作系统。它允许任何人自由地使用、修改和重发布，目标是创建一套新颖、多功能并且自由的操作系统。</p><h3 id="0x01-官网下载Fedora系统镜像文件"><a href="#0x01-官网下载Fedora系统镜像文件" class="headerlink" title="0x01 官网下载Fedora系统镜像文件"></a>0x01 官网下载Fedora系统镜像文件</h3><p>官网：<a target="_blank" rel="noopener" href="https://getfedora.org/">Fedora (getfedora.org)</a></p><p>点击：</p><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/img/image-20220910111720142.png" alt="image-20220910111720142"></p><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/img/image-20220910111740868.png" alt="image-20220910111740868"></p><p>等待下载完成。</p><h3 id="0x02-通过VMware虚拟机进行安装"><a href="#0x02-通过VMware虚拟机进行安装" class="headerlink" title="0x02 通过VMware虚拟机进行安装"></a>0x02 通过VMware虚拟机进行安装</h3><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/img/image-20220910111833164.png" alt="image-20220910111833164"></p><p>根据过程一步步安装完成即可。</p><h3 id="0x03-更换软件源地址"><a href="#0x03-更换软件源地址" class="headerlink" title="0x03 更换软件源地址"></a>0x03 更换软件源地址</h3><p>进入yum源的存储文件，进行备份和替换。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv /etc/yum.repos.d/fedora.repo /etc/yum.repos.d/fedora.repo.backup</span><br><span class="line">mv /etc/yum.repos.d/fedora-updates.repo /etc/yum.repos.d/fedora-updates.repo.backup</span><br></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/fedora-updates.repo http://mirrors.aliyun.com/repo/fedora-updates.repo</span><br><span class="line">wget -O /etc/yum.repos.d/fedora.repo http://mirrors.aliyun.com/repo/fedora.repo</span><br></pre></td></tr></table></figure><p>更新yum缓存，使更改失效。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure><blockquote><p>以上命令在root用户下使用，非root用户请在命令前添加sudo。</p></blockquote><h3 id="0x04-更新系统文件和软件"><a href="#0x04-更新系统文件和软件" class="headerlink" title="0x04 更新系统文件和软件"></a>0x04 更新系统文件和软件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum upgrade &amp;&amp; yum update</span><br></pre></td></tr></table></figure><p>更换了源之后，下载软件跟拉屎一样流畅。</p><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/img/image-20220910112539522.png" alt="image-20220910112539522"></p><h3 id="0x05-使用zsh终端"><a href="#0x05-使用zsh终端" class="headerlink" title="0x05 使用zsh终端"></a>0x05 使用zsh终端</h3><p>安装 <code>zsh</code> 终端</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y zsh</span><br></pre></td></tr></table></figure><p>查看当前终端：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $SHELL</span><br></pre></td></tr></table></figure><p>查看已有终端：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/shells</span><br></pre></td></tr></table></figure><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/img/image-20220910113058184.png" alt="image-20220910113058184"></p><p>更换终端为<code>zsh</code></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chsh -s /bin/zsh</span><br></pre></td></tr></table></figure><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/img/image-20220910113408484.png" alt="image-20220910113408484"></p><p>重新登入后生效，或者直接输入<code>zsh</code>切换终端。</p><h3 id="0x06-安装Oh-my-zsh美化终端"><a href="#0x06-安装Oh-my-zsh美化终端" class="headerlink" title="0x06 安装Oh my zsh美化终端"></a>0x06 安装Oh my zsh美化终端</h3><p>安装<code>git</code></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y git</span><br></pre></td></tr></table></figure><p>安装<code>oh my zsh</code></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh</span><br></pre></td></tr></table></figure><p>出现以下选项：</p><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/img/image-20220910115545042.png" alt="image-20220910115545042"></p><p>输入<code>Y</code></p><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/img/image-20220910115649477.png" alt="image-20220910115649477"></p><p>安装完成。</p><p>查看<code>oh my zsh</code>现有主题</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.oh-my-zsh/themes</span><br><span class="line">ls -h</span><br></pre></td></tr></table></figure><p>查看<code>oh my zsh</code>配置文件<code>.zshrc</code></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br></pre></td></tr></table></figure><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/img/image-20220910120004680.png" alt="image-20220910120004680"></p><p>修改此处即可更换主题。</p><p>在其中找到<code>plugin</code>字段，可以进行添加插件：</p><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/img/image-20220910120343933.png" alt="image-20220910120343933"></p><p>下载插件<code>zsh-syntax-highlighting</code>：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure><p>下载插件<code>zsh-autosuggestions</code>：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/zsh-users/zsh-autosuggestions $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure><p>在<code>.zshrc</code>添加我常用的几个插件</p><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/img/image-20220910120518365.png" alt="image-20220910120518365"></p><p>应用更改：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/img/image-20220910121424455.png" alt="image-20220910121424455"></p><p>完成！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 后端 </tag>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Typora安装和破解教程</title>
       <link href="/2022/09/10/759381d60bc2-q1jun/"/>
       <url>/2022/09/10/759381d60bc2-q1jun/</url>
@@ -561,11 +588,11 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> 数据结构 </tag>
             
             <tag> 算法 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -590,11 +617,11 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> 数据结构 </tag>
             
             <tag> 算法 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
