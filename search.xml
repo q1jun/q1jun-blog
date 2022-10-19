@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>[XSCTF]crypto-一元二次方程组</title>
+      <link href="/2022/10/19/77e56cb6490b-q1jun/"/>
+      <url>/2022/10/19/77e56cb6490b-q1jun/</url>
+      
+        <content type="html"><![CDATA[<h2 id="0x01-题目"><a href="#0x01-题目" class="headerlink" title="0x01 题目"></a>0x01 题目</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line"><span class="keyword">from</span> Crypto.Util <span class="keyword">import</span> number</span><br><span class="line"><span class="keyword">from</span> secret <span class="keyword">import</span> flag</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">size = <span class="number">256</span></span><br><span class="line">e = <span class="number">65537</span></span><br><span class="line">p = number.getPrime(size)</span><br><span class="line">q = number.getPrime(size)</span><br><span class="line">avg = (p+q)/<span class="number">2</span></span><br><span class="line">n = p*q</span><br><span class="line"></span><br><span class="line">m = libnum.s2n(flag)</span><br><span class="line">c = <span class="built_in">pow</span>(m, e, n)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;n = %d&#x27;</span> % n)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;avg = %d&#x27;</span> % avg)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;c = %d&#x27;</span> % c)</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="number">5700102857084805454304483466349768960970728516788155745115335016563400814300152521175777999545445613444815936222559357974566843756936687078467221979584601</span></span><br><span class="line">avg = <span class="number">75635892913589759545076958131039534718834447688923830032758709253942408722875</span></span><br><span class="line">c = <span class="number">888629627089650993173073530112503758717074884215641346688043288414489462472394318700014742820213053802180975816089493243275025049174955385229062207064503</span></span><br></pre></td></tr></table></figure><h2 id="0x02-解题"><a href="#0x02-解题" class="headerlink" title="0x02 解题"></a>0x02 解题</h2><p>解方程组，由<br>$$<br>\phi(n) &#x3D; (q-1)\times(p-1)<br>$$<br>得到<br>$$<br>\phi(n)&#x3D;p\times{q}-(p+q)+1<br>$$<br>这里的<code>p*q=n</code>已知，$p+q$可以用<code>avg*2</code>代替.</p><p>解题脚本：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">n = <span class="number">5700102857084805454304483466349768960970728516788155745115335016563400814300152521175777999545445613444815936222559357974566843756936687078467221979584601</span></span><br><span class="line">avg = <span class="number">75635892913589759545076958131039534718834447688923830032758709253942408722875</span></span><br><span class="line">c = <span class="number">888629627089650993173073530112503758717074884215641346688043288414489462472394318700014742820213053802180975816089493243275025049174955385229062207064503</span></span><br><span class="line">phi = n - avg*<span class="number">2</span> + <span class="number">1</span></span><br><span class="line">e = <span class="number">65537</span></span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line">d = gmpy2.invert(e,phi)</span><br><span class="line">m = <span class="built_in">pow</span>(c,d,n)</span><br><span class="line">long_to_bytes(m)</span><br></pre></td></tr></table></figure><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/image-20221019193754543.png" alt="image-20221019193754543"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络安全 </category>
+          
+          <category> Crypto </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网络安全 </tag>
+            
+            <tag> Crypto </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[BUUctf]crypto-LCG Revenge</title>
       <link href="/2022/10/13/ac0b312ad234-q1jun/"/>
       <url>/2022/10/13/ac0b312ad234-q1jun/</url>
