@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>q1jun&#39;s Blog|欢迎访问q1jun的个人博客</title>
+  <title>q1jun&#39;s Blog</title>
   <icon>https://q1jun.cn/icon.png</icon>
   <subtitle>q1jun&#39;s Blog</subtitle>
   <link href="https://q1jun.cn/atom.xml" rel="self"/>
