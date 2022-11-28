@@ -1,0 +1,23 @@
+User-agent: *
+
+Allow: /
+Allow: /2022/
+Allow: /2021/
+Allow: /2020/
+Allow: /2019/
+Allow: /archives/
+Allow: /categories/
+Allow: /page/
+Allow: /tags/
+
+Disallow: /assets/
+Disallow: /fonts/
+Disallow: /img/
+Disallow: /js/
+Disallow: /music/
+Disallow: /css/
+
+Disallow: /*.js
+Disallow: /*.css
+
+Sitemap: https://q1jun.cn/sitemap.xml
