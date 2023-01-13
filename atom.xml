@@ -1123,11 +1123,11 @@
     <category term="算法" scheme="https://q1jun.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-    <category term="Java" scheme="https://q1jun.cn/tags/Java/"/>
-    
     <category term="数据结构" scheme="https://q1jun.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     <category term="算法" scheme="https://q1jun.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="Java" scheme="https://q1jun.cn/tags/Java/"/>
     
   </entry>
   
@@ -1152,11 +1152,11 @@
     <category term="算法" scheme="https://q1jun.cn/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-    <category term="Java" scheme="https://q1jun.cn/tags/Java/"/>
-    
     <category term="数据结构" scheme="https://q1jun.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     <category term="算法" scheme="https://q1jun.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="Java" scheme="https://q1jun.cn/tags/Java/"/>
     
   </entry>
   
@@ -1183,9 +1183,9 @@
     <category term="Web" scheme="https://q1jun.cn/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web/"/>
     
     
-    <category term="Web" scheme="https://q1jun.cn/tags/Web/"/>
-    
     <category term="Python" scheme="https://q1jun.cn/tags/Python/"/>
+    
+    <category term="Web" scheme="https://q1jun.cn/tags/Web/"/>
     
     <category term="bs4" scheme="https://q1jun.cn/tags/bs4/"/>
     
@@ -1615,9 +1615,9 @@
     
     <category term="Linux" scheme="https://q1jun.cn/tags/Linux/"/>
     
-    <category term="MySql" scheme="https://q1jun.cn/tags/MySql/"/>
-    
     <category term="CentOS" scheme="https://q1jun.cn/tags/CentOS/"/>
+    
+    <category term="MySql" scheme="https://q1jun.cn/tags/MySql/"/>
     
   </entry>
   
