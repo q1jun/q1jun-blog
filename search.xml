@@ -1101,11 +1101,11 @@
       
         <tags>
             
+            <tag> Java </tag>
+            
             <tag> 数据结构 </tag>
             
             <tag> 算法 </tag>
-            
-            <tag> Java </tag>
             
         </tags>
       
@@ -1130,11 +1130,11 @@
       
         <tags>
             
+            <tag> Java </tag>
+            
             <tag> 数据结构 </tag>
             
             <tag> 算法 </tag>
-            
-            <tag> Java </tag>
             
         </tags>
       
@@ -1161,9 +1161,9 @@
       
         <tags>
             
-            <tag> Python </tag>
-            
             <tag> Web </tag>
+            
+            <tag> Python </tag>
             
             <tag> bs4 </tag>
             
@@ -1591,9 +1591,9 @@
             
             <tag> Linux </tag>
             
-            <tag> CentOS </tag>
-            
             <tag> MySql </tag>
+            
+            <tag> CentOS </tag>
             
         </tags>
       
