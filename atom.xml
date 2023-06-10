@@ -6,7 +6,7 @@
   <link href="https://q1jun.cn/atom.xml" rel="self"/>
   
   <link href="https://q1jun.cn/"/>
-  <updated>2023-05-31T03:23:31.000Z</updated>
+  <updated>2023-06-10T09:23:31.000Z</updated>
   <id>https://q1jun.cn/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[2023安洵杯]misc-sudoku数独游戏</title>
+    <link href="https://q1jun.cn/2023/06/10/62ae16ba4e67-q1jun/"/>
+    <id>https://q1jun.cn/2023/06/10/62ae16ba4e67-q1jun/</id>
+    <published>2023-06-10T09:23:31.000Z</published>
+    <updated>2023-06-10T09:23:31.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;0x01-题目&quot;&gt;&lt;a href=&quot;#0x01-题目&quot; class=&quot;headerlink&quot; title=&quot;0x01 题目&quot;&gt;&lt;/a&gt;0x01 题目&lt;/h2&gt;&lt;p&gt;题目大意：规定时间内通过解决数个数独问题来获得flag。&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="网络安全" scheme="https://q1jun.cn/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="Misc" scheme="https://q1jun.cn/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Misc/"/>
+    
+    
+    <category term="网络安全" scheme="https://q1jun.cn/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="Misc" scheme="https://q1jun.cn/tags/Misc/"/>
+    
+  </entry>
   
   <entry>
     <title>[2023饶派杯车联网CTF]对访客开放的车载系统</title>
