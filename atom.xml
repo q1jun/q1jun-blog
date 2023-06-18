@@ -6,7 +6,7 @@
   <link href="https://q1jun.cn/atom.xml" rel="self"/>
   
   <link href="https://q1jun.cn/"/>
-  <updated>2023-06-10T09:23:31.000Z</updated>
+  <updated>2023-06-18T01:23:31.000Z</updated>
   <id>https://q1jun.cn/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python实现校园网宽带Web自动认证</title>
+    <link href="https://q1jun.cn/2023/06/18/3f8cef62d8f6-q1jun/"/>
+    <id>https://q1jun.cn/2023/06/18/3f8cef62d8f6-q1jun/</id>
+    <published>2023-06-18T01:23:31.000Z</published>
+    <updated>2023-06-18T01:23:31.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;0x01-前言&quot;&gt;&lt;a href=&quot;#0x01-前言&quot; class=&quot;headerlink&quot; title=&quot;0x01 前言&quot;&gt;&lt;/a&gt;0x01 前言&lt;/h2&gt;&lt;p&gt;​   </summary>
+        
+      
+    
+    
+    
+    <category term="网络安全" scheme="https://q1jun.cn/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="Web" scheme="https://q1jun.cn/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web/"/>
+    
+    
+    <category term="Python" scheme="https://q1jun.cn/tags/Python/"/>
+    
+    <category term="Web" scheme="https://q1jun.cn/tags/Web/"/>
+    
+    <category term="bs4" scheme="https://q1jun.cn/tags/bs4/"/>
+    
+    <category term="爬虫" scheme="https://q1jun.cn/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>[2023安洵杯]misc-sudoku数独游戏</title>
